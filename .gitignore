@@ -1,2 +1,6 @@
 #ambiente virtual
 .venv/
+
+#arquvo compilados do Python
+__pycache__/
+*.pyc
