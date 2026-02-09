@@ -1,8 +1,10 @@
 from sqlite3 import Connection, connect, Cursor
-from typing import Any
+from types import TracebackType
+from typing import Any, Self, Optional, Type
+import traceback
 
 class Database:
-    def __init__(self, db_name: str) -> None :
+    def __init__(self, db_name: str) -> None:
         self.connection: Connection = connect(db_name)
         self.cursor: Cursor = self.connection.cursor()
 
@@ -18,18 +20,30 @@ class Database:
     def close(self) -> None:
         self.connection.close()
 
+    
     # Métodos para o gerenciamento de contexto
-
-    #Método de entrada do contexto 
-    def __enter__(self):
+    # Método de entrada no contexto
+    def __enter__(self) -> Self:
         return self
+    
+    # Método de saída do contexto
+    def __exit__(
+            self, 
+            exc_type: Optional[Type[BaseException]], 
+            exc_value: Optional[BaseException], 
+            tb: Optional[TracebackType]) -> None:
+        
+        if exc_type is not None:
+            print('Exceção capturada no contexto:')
+            print(f'Tipo: {exc_type.__name__}')
+            print(f'Mensagem: {exc_value}')
+            print('Traceback completo:')
+            traceback.print_tb(tb)
 
-    # Método de saída do contexto 
-    def __exit__(self, exc_type, exc_value, traceback):
         self.close()
 
 
-# # Área de Testes
+# Área de Testes
 # try:
 #     db = Database('./data/tarefas.sqlite3')
 #     db.executar('''
@@ -38,8 +52,5 @@ class Database:
 #         titulo_tarefa TEXT NOT NULL,
 #         data_conclusao TEXT);
 #     ''')
-#     db.executar(" INSERT INTO tarefas (titulo_tarefa, data_conclusao) VALUES (?, ?);", ("Estudar Python", "2026-01-29"))
+#     db.executar('INSERT INTO tarefas (titulo_tarefa, data_conclusao) VALUES (?, ?);', ('Estudar Python', '2026-02-02'))
 # except Exception as e:
-#     print(f"Erro ao criar tabela: {e}")
-# finally:
-#     db.close()
