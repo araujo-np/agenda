@@ -1,0 +1,146 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fce4ec;  /* Tom suave de rosa pastel */
+    color: #333;
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    flex-direction: column;  /* Alinha os itens em coluna */
+}
+
+/* Centraliza conteúdo */
+.pagina, .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Título principal - Centraliza no topo */
+h1 {
+    font-size: 36px;
+    color: #d81b60;  /* Rosa escuro para contraste */
+    margin-bottom: 50px;  /* Espaçamento abaixo do título */
+    align-self: center;  /* Centraliza horizontalmente */
+}
+
+/* Formulário elegante com tons pastéis */
+form {
+    background: #f8bbd0;  /* Rosa pastel mais claro */
+    padding: 25px 30px;
+    width: 320px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    margin: 0 auto;
+}
+
+form input {
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #f48fb1;  /* Rosa claro */
+    border-radius: 8px;
+    transition: border-color 0.2s;
+}
+
+form input:focus {
+    border-color: #d81b60;  /* Rosa escuro no foco */
+    outline: none;
+}
+
+/* Botão moderno */
+form button {
+    padding: 12px;
+    font-size: 16px;
+    background-color: #d81b60;  /* Rosa escuro */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+form button:hover {
+    background-color: #c2185b;  /* Rosa mais suave */
+    transform: translateY(-2px);
+}
+
+/* Cartões de tarefas */
+.tarefa {
+    background: #f8bbd0;  /* Rosa pastel */
+    padding: 20px;
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.07);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin: 0 auto;
+}
+
+.tarefa:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.tarefa h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.tarefa .data {
+    font-size: 13px;
+    color: #777;
+}
+
+/* Botão-link elegante */
+.botao-link {
+    text-decoration: none;
+    background-color: #d81b60;  /* Rosa escuro */
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0 auto;
+}
+
+.botao-link:hover {
+    background-color: #c2185b;
+    transform: translateY(-2px);
+}
+
+/* Mensagem de boas-vindas */
+.boas-vindas {
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    form, .tarefa {
+        width: 90%;
+    }
+    h1 {
+        font-size: 28px;
+    }
+    .boas-vindas {
+        font-size: 18px;
+    }
+}
